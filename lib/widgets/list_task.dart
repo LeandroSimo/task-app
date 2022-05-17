@@ -6,7 +6,9 @@ class ListTask extends StatelessWidget {
   final List<Task> _listTask;
   final Function _handleSwitchChange;
   final bool _isPortrait;
-  ListTask(this._listTask, this._handleSwitchChange, this._isPortrait);
+  final Function _removeItem;
+  ListTask(this._listTask, this._handleSwitchChange, this._isPortrait,
+      this._removeItem);
 
   @override
   Widget build(BuildContext context) {
@@ -44,49 +46,34 @@ class ListTask extends StatelessWidget {
       itemCount: _listTask.length,
       separatorBuilder: (_, index) => Divider(),
       itemBuilder: (BuildContext context, int index) {
-        return Dismissible(
-          key: Key(_listTask[index].title),
-          child: ListTile(
-            title: Text(
-              _listTask[index].title,
-              style: _listTask[index].finished
-                  ? TextStyle(decoration: TextDecoration.lineThrough)
-                  : null,
-            ),
-            subtitle: _listTask[index].finished
-                ? null
-                : Text(
-                    _listTask[index].description.length > _maxLength
-                        ? "${_listTask[index].description.substring(0, _maxLength)}..."
-                        : _listTask[index].description,
-                  ),
-            leading: Switch.adaptive(
-              activeColor: Colors.green,
-              activeTrackColor: Colors.greenAccent,
-              inactiveThumbColor: Colors.red,
-              inactiveTrackColor: Colors.redAccent.shade100,
-              value: _listTask[index].finished,
-              onChanged: (value) => _handleSwitchChange(index, value),
-            ),
-            onTap: () => _handlerOnTap(
-                _listTask[index].title, _listTask[index].description),
+        return ListTile(
+          title: Text(
+            _listTask[index].title,
+            style: _listTask[index].finished
+                ? TextStyle(decoration: TextDecoration.lineThrough)
+                : null,
           ),
-          background: Container(
-            color: Colors.red,
-            padding: EdgeInsets.all(8),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.delete,
-                    color: Colors.white,
-                  ),
-                )
-              ],
-            ),
+          subtitle: _listTask[index].finished
+              ? null
+              : Text(
+                  _listTask[index].description.length > _maxLength
+                      ? "${_listTask[index].description.substring(0, _maxLength)}..."
+                      : _listTask[index].description,
+                ),
+          leading: Switch.adaptive(
+            activeColor: Colors.green,
+            activeTrackColor: Colors.greenAccent,
+            inactiveThumbColor: Colors.red,
+            inactiveTrackColor: Colors.redAccent.shade100,
+            value: _listTask[index].finished,
+            onChanged: (value) => _handleSwitchChange(index, value),
           ),
+          trailing: IconButton(
+            icon: Icon(Icons.delete),
+            onPressed: () => _removeItem(index),
+          ),
+          onTap: () => _handlerOnTap(
+              _listTask[index].title, _listTask[index].description),
         );
       },
     );

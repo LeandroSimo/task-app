@@ -16,7 +16,62 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final List<Task> _listTask = [];
+  final List<Task> _listTask = [
+    Task(
+      "Compras",
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+          "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
+      false,
+    ),
+    Task(
+      "Compras",
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+          "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
+      false,
+    ),
+    Task(
+      "Compras",
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+          "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
+      false,
+    ),
+    Task(
+      "Compras",
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+          "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
+      false,
+    ),
+    Task(
+      "Compras",
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+          "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
+      false,
+    ),
+    Task(
+      "Compras",
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+          "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
+      false,
+    ),
+    Task(
+      "Compras",
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+          "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
+      false,
+    ),
+    Task(
+      "Compras",
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+          "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
+      false,
+    ),
+    Task(
+      "Compras",
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+          "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
+      false,
+    ),
+  ];
 
   void _handleSwitchChange(int index, bool value) {
     setState(() {
@@ -27,6 +82,12 @@ class _HomeState extends State<Home> {
   void _saveTask(Task task) {
     setState(() {
       _listTask.add(task);
+    });
+  }
+
+  _removeItem(int index) {
+    setState(() {
+      _listTask.removeAt(index);
     });
   }
 
@@ -96,7 +157,7 @@ class _HomeState extends State<Home> {
 
     return Scaffold(
       appBar: _appBar(),
-      body: ListTask(_listTask, _handleSwitchChange, _isPortrait),
+      body: ListTask(_listTask, _handleSwitchChange, _isPortrait, _removeItem),
       floatingActionButton: FloatingActionButton(
         onPressed: _handleAddPress,
         child: Icon(Icons.add),
