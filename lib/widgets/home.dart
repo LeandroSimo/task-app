@@ -16,13 +16,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final List<Task> _listTask = [
-    Task("Compras", "Comprar Notebook", false),
-    Task(
-        "Compras",
-        "Comprar Monitor, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-        false),
-  ];
+  final List<Task> _listTask = [];
 
   void _handleSwitchChange(int index, bool value) {
     setState(() {
@@ -30,11 +24,10 @@ class _HomeState extends State<Home> {
     });
   }
 
-  _handleAddPress() {
-    showDialog(
-      context: context,
-      builder: (_) => NewTaskDialog(),
-    );
+  void _saveTask(Task task) {
+    setState(() {
+      _listTask.add(task);
+    });
   }
 
   @override
@@ -43,11 +36,18 @@ class _HomeState extends State<Home> {
     final _mediaQuery = MediaQuery.of(context);
     final _isPortrait = _mediaQuery.orientation == Orientation.portrait;
     final _landscapeHeigth = _mediaQuery.size.height * 0.18;
-    final _portraitHeigth = _mediaQuery.size.height * 0.2;
+    final _portraitHeigth = _mediaQuery.size.height * 0.19;
 
     final _appBarHeigth = _isPortrait ? _portraitHeigth : _landscapeHeigth;
 
-    _appBar(BuildContext context) {
+    _handleAddPress() {
+      showDialog(
+        context: context,
+        builder: (_) => NewTaskDialog(_saveTask),
+      );
+    }
+
+    _appBar() {
       return AppBar(
         bottom: PreferredSize(
           child: Padding(
@@ -95,7 +95,7 @@ class _HomeState extends State<Home> {
     }
 
     return Scaffold(
-      appBar: _appBar(context),
+      appBar: _appBar(),
       body: ListTask(_listTask, _handleSwitchChange, _isPortrait),
       floatingActionButton: FloatingActionButton(
         onPressed: _handleAddPress,
