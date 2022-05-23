@@ -1,16 +1,55 @@
-# task_app
+<h1 align="center">
+    Task App
+</h1>
 
-A new Flutter project.
+<p align="center">
+  <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#rocket-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#information_source-como-executar">Como executar</a>&nbsp;&nbsp;&nbsp;
+</p>
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+<p align="center">
+  <img alt="App screen" src="https://user-images.githubusercontent.com/56087579/168925933-1d85e9b7-db11-496f-92af-47bfdf2fe391.png" width="250px">
+  <img alt="App screen" src="https://user-images.githubusercontent.com/56087579/168926160-e59f245f-a84a-45dc-a63f-713253f40b2e.png" width="258px"><br>
+  <img alt="App screen" src="https://user-images.githubusercontent.com/56087579/168926366-dc597235-7496-4aa3-8e33-b3df91730882.png" width="250px">
+  <img alt="App screen" src="https://user-images.githubusercontent.com/56087579/168925328-efc4cf52-a799-4ba4-b7ad-40dc57da2091.png" width="250px">
+</p>
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 💻 Projeto
+
+Projeto baseado em curso online, desenvolvido para uso pessoal.<br>
+Em desenvolvimento...
+
+
+## :rocket: Tecnologias
+
+Esse app foi feito com as seguintes tecnologias:
+- [Flutter][flutter]
+- [Dart][dart]
+
+## :information_source: Como executar
+
+Para clonar e executar esse app você precisará do [Git](https://git-scm.com) + [Flutter][flutter] instalados no seu computador.
+
+### Clone e execute 
+
+```bash
+# Clone esse repositório
+$ git clone https://github.com/LeandroSimo/task-app.git
+
+# Entre no repositório
+$ cd task-app/
+
+# Instale as dependências
+$ flutter pub get
+
+# Execute
+$ flutter run
+
+```
+
+[flutter]: https://flutter.dev/
+[dart]: https://dart.dev/
