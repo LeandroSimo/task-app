@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
-import 'package:task_app/widgets/list_task.dart';
 
-import './new_task_dialog.dart';
-import '../models/task.dart';
+import '../tasks/list_task.dart';
+import '../tasks/new_task_dialog.dart';
+import '../../model/task.dart';
 
 class Home extends StatefulWidget {
   const Home({

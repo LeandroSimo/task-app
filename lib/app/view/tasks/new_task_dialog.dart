@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
-import 'package:task_app/models/task.dart';
+import 'package:task_app/app/model/task.dart';
 
 class NewTaskDialog extends StatelessWidget {
   final Function _saveTask;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:task_app/widgets/home.dart';
+import 'package:task_app/app/view/home/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,7 +30,6 @@ class MyApp extends StatelessWidget {
           ),
           button: TextStyle(
             fontFamily: 'Righteous',
-            color: Colors.black,
           ),
         ),
       ),
