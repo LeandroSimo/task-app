@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
+import 'package:task_app/app/controller/home/home_controller.dart';
 import 'package:task_app/app/model/task.dart';
 
 class NewTaskDialog extends StatelessWidget {
@@ -8,31 +9,39 @@ class NewTaskDialog extends StatelessWidget {
 
   NewTaskDialog(this._saveTask);
 
+  HomeController _homeController = HomeController();
+
   static final _controllerTitle = TextEditingController();
   static final _controllerDescription = TextEditingController();
 
-  final Widget _title = TextField(
-    controller: _controllerTitle,
-    decoration: InputDecoration(
-      labelText: "Título",
-    ),
-  );
-  final Widget _description = TextField(
-    controller: _controllerDescription,
-    decoration: InputDecoration(
-      labelText: "Descrição",
-    ),
-    minLines: 2,
-    maxLines: 10,
-  );
+  _title() {
+    return TextField(
+      onChanged: _homeController.setTitle,
+      decoration: InputDecoration(
+        labelText: "Título",
+      ),
+    );
+  }
+
+  _description() {
+    return TextField(
+      onChanged: _homeController.setDescription,
+      controller: _controllerDescription,
+      decoration: InputDecoration(
+        labelText: "Descrição",
+      ),
+      minLines: 2,
+      maxLines: 10,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     void _handleSave() {
       final Task task = Task(
-        _controllerTitle.text,
-        _controllerDescription.text,
-        false,
+        _homeController.title,
+        _homeController.description,
+        _homeController.finished,
       );
       _controllerTitle.clear();
       _controllerDescription.clear();
@@ -53,8 +62,8 @@ class NewTaskDialog extends StatelessWidget {
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          _title,
-          _description,
+          _title(),
+          _description(),
         ],
       ),
       actions: [

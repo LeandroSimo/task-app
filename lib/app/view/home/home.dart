@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 
@@ -16,62 +17,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final List<Task> _listTask = [
-    Task(
-      "Compras",
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-          "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
-      false,
-    ),
-    Task(
-      "Compras",
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-          "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
-      false,
-    ),
-    Task(
-      "Compras",
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-          "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
-      false,
-    ),
-    Task(
-      "Compras",
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-          "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
-      false,
-    ),
-    Task(
-      "Compras",
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-          "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
-      false,
-    ),
-    Task(
-      "Compras",
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-          "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
-      false,
-    ),
-    Task(
-      "Compras",
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-          "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
-      false,
-    ),
-    Task(
-      "Compras",
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-          "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
-      false,
-    ),
-    Task(
-      "Compras",
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-          "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
-      false,
-    ),
-  ];
+  final List<Task> _listTask = [];
 
   void _handleSwitchChange(int index, bool value) {
     setState(() {
@@ -157,7 +103,14 @@ class _HomeState extends State<Home> {
 
     return Scaffold(
       appBar: _appBar(),
-      body: ListTask(_listTask, _handleSwitchChange, _isPortrait, _removeItem),
+      body: Observer(
+        builder: (_) => ListTask(
+          _listTask,
+          _handleSwitchChange,
+          _isPortrait,
+          _removeItem,
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: _handleAddPress,
         child: Icon(Icons.add),
