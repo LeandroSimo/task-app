@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task_app/app/view/home/home.dart';
+import 'package:task_app/app/view/screens/screen_preview_home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,6 +13,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData theme = ThemeData();
     return MaterialApp(
+      initialRoute: '/',
+      routes: {
+        "/": (_) => ScreenPreviewHome(),
+        "home": (_) => Home(),
+      },
       debugShowCheckedModeBanner: false,
       title: 'Task App',
       theme: theme.copyWith(
@@ -33,7 +39,6 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: Home(),
     );
   }
 }

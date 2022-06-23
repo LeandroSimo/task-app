@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 
@@ -103,13 +102,11 @@ class _HomeState extends State<Home> {
 
     return Scaffold(
       appBar: _appBar(),
-      body: Observer(
-        builder: (_) => ListTask(
-          _listTask,
-          _handleSwitchChange,
-          _isPortrait,
-          _removeItem,
-        ),
+      body: ListTask(
+        _listTask,
+        _handleSwitchChange,
+        _isPortrait,
+        _removeItem,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _handleAddPress,
